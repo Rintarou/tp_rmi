@@ -18,12 +18,16 @@ public class ClientRmi {
                                                 NotBoundException,
                                                 UnknownHostException
   {
+    if(args.length<1) {
+      System.out.println("usage: ClientRmi <nom de la ville> (villes: La Rochelle)");
+      System.exit(1);
+    }
     try {
       Remote monStub = Naming.lookup("rmi://"+
       java.net.InetAddress.getLocalHost()+":1099"+"/TestSRVTPrmi");
       if (monStub instanceof MonInterfaceDistant) {
-        String lecode = ((MonInterfaceDistant) monStub).getCode();
-        System.out.println("code recupere ="+lecode);
+        Integer leclassement = ((MonInterfaceDistant) monStub).getClassement(args[0]);
+        System.out.println("classement de "+args[0]+": "+leclassement);
       }
     }
     catch (NotBoundException e) {

@@ -6,24 +6,25 @@ import java.net.UnknownHostException;
 import java.rmi.*;
 import java.util.HashMap;
 
-public class TestServeurRmi {
+public class TestServeurRmiBack {
   public static void main(String[] args) throws RemoteException,
                                                 MalformedURLException,
                                                 UnknownHostException
   {
-    if (args.length < 1) {
-      System.out.println("usage: TestServeurRmi <number of servers(counting this one)>");
+    if (args.length < 2) {
+      System.out.println("usage: TestServeurRmi <number of the server> <number of servers>");
       System.exit(1);
     }
-    int numserv = Integer.valueOf(args[0]);
+    int num = Integer.valueOf(args[0]);
+    int numserv = Integer.valueOf(args[1]);
     HashMap<String, Integer> datMap = new HashMap<String, Integer>();
-    datMap.put("La Rochelle", 4);
-    datMap.put("Raproc", 11);
-    datMap.put("NopesVille", 1);
-    datMap.put("Baraque of Bama", 3);
-    MonObjetAccessibleDistance testSRVTPrmi = new MonObjetAccessibleDistance(datMap, 1, numserv);
+    datMap.put("Illinois", 7);
+    datMap.put("ToadsVille", 12);
+    datMap.put("village Lynna", 2);
+    datMap.put("Bielorussie", 25);
+    MonObjetAccessibleDistance testSRVTPrmi = new MonObjetAccessibleDistance(datMap, num, numserv);
     try{
-      Naming.rebind("rmi://"+InetAddress.getLocalHost()+":1099"+"/TestSRVTPrmi", testSRVTPrmi);
+      Naming.rebind("rmi://"+InetAddress.getLocalHost()+":1099"+"/TestSRVTPrmi"+num, testSRVTPrmi);
     }
     catch (MalformedURLException ee) {
       throw new MalformedURLException("Pbm de URL");

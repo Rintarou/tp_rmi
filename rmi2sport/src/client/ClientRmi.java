@@ -21,15 +21,17 @@ public class ClientRmi {
   {
     try {
       Remote monStub = Naming.lookup("rmi://"+
-      java.net.InetAddress.getLocalHost()+":1099"+"/TestSRVTPrmi");
+        java.net.InetAddress.getLocalHost()+":1099"+"/TestSRVTPrmi");
+
       if (monStub instanceof MonInterfaceDistant) {
         String lecode = ((MonInterfaceDistant) monStub).getCode();
         HashMap<String, Integer> classmt = ((MonInterfaceDistant) monStub).getClassement();
-        System.out.println("code recupere lel ="+lecode);
-        System.out.println("classmt : "+classmt.toString());
+        //Integer classement = ((MonInterfaceDistant) monStub).getClassement("Illinois"); //la ligne qui plante
+        System.out.println(classmt.toString());
       }
     }
     catch (NotBoundException e) {
+      e.printStackTrace();
       throw new NotBoundException("Pbm de liaison");
     }
     catch (UnknownHostException e) {

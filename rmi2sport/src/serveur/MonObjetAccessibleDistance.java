@@ -11,10 +11,6 @@ public class MonObjetAccessibleDistance extends java.rmi.server.UnicastRemoteObj
     super();
     classement= map;
     available = true;
-    classement.put("La Rochelle", 4);
-    classement.put("Raproc", 11);
-    classement.put("NopesVille", 1);
-    classement.put("Baraque of Bama", 3);
   }
   public String getCode() throws RemoteException { return "camarche"; }
 

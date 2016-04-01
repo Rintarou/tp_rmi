@@ -11,8 +11,12 @@ public class TestServeurRmi {
                                                 MalformedURLException,
                                                 UnknownHostException
   {
-    HashMap<String, Integer>
-    MonObjetAccessibleDistance testSRVTPrmi = new MonObjetAccessibleDistance();
+    HashMap<String, Integer> datMap = new HashMap<String, Integer>();
+    datMap.put("La Rochelle", 4);
+    datMap.put("Raproc", 11);
+    datMap.put("NopesVille", 1);
+    datMap.put("Baraque of Bama", 3);
+    MonObjetAccessibleDistance testSRVTPrmi = new MonObjetAccessibleDistance(datMap);
     try{
       Naming.rebind("rmi://"+InetAddress.getLocalHost()+":1099"+"/TestSRVTPrmi", testSRVTPrmi);
     }
